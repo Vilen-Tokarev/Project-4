@@ -130,27 +130,44 @@ const sentBtn = document.getElementById('send-modal-btn');
 
 
 // Создать
-const newReviews = {
-  reviews_login: loginInput.value,
-  reviews_rare: rareInput.value,
-  reviews_text: textInput.value,
-};
-
 
 sentBtn.addEventListener('click', () => {
+  const newReviews = {
+    login: loginInput.value,
+    rare: rareInput.value,
+    text: textInput.value,
+  };
   setReviews(newReviews);
   console.log('нажал');
-  
+  document.getElementById("modal").classList.remove("open");
 })
 
+const reviewsUrl = `${apiUrl}/reviews`
 
- 
 
-function setReviews(reviews) {
-  fetch(apiUrl, {
-    method: 'PUT',
+function displayReviews(reviewsUrl) {
+  fetch(reviewsUrl, {
+    method: 'GET',
+    headers: {'content-type':'application/json'},
+  }).then(res => {
+    if (res.ok) {
+        return res.json();
+    }
+    // handle error
+  }).then(tasks => {
+    reviews(tasks);
+  }).catch(error => {
+    // handle error
+  })
+}
+
+
+
+function setReviews(review) {
+  fetch(reviewsUrl, {
+    method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(reviews)
+    body: JSON.stringify(review)
   }).then(response => {
     if (response.ok) {
       return response.json();
@@ -158,56 +175,56 @@ function setReviews(reviews) {
   }).then(task => {
     console.log(task);
     console.log('успешно');
+    displayReviews(reviewsUrl)
   }).catch(error => {
     console.error(error);
   })
 }
 
 
-function reviews() {
+function reviews(tasks) {
   const rewWrap = document.getElementById("rewWrap");
   rewWrap.innerHTML = "";
 
-  const reviewsText = JSON.parse(localStorage.getItem("reviewsText")) || [];
-
-  reviewsText.forEach((review) => {
+  tasks.forEach(task => {
     let box = document.createElement("div");
-    box.classList.add("reviews_box");
+  box.classList.add("reviews_box");
 
-    let wrapBox = document.createElement("div");
-    wrapBox.classList.add("reviews_wrapBox");
-    let wrapBox2 = document.createElement("div");
-    wrapBox2.classList.add("reviews_wrapBox2");
+  let wrapBox = document.createElement("div");
+  wrapBox.classList.add("reviews_wrapBox");
+  let wrapBox2 = document.createElement("div");
+  wrapBox2.classList.add("reviews_wrapBox2");
 
-    let login = document.createElement("p");
-    login.textContent = review.login;
-    login.classList.add("reviews_login");
+  let login = document.createElement("p");
+  login.textContent = task.login;
+  login.classList.add("reviews_login");
 
-    let rare = document.createElement("p");
-    rare.textContent = "Оценка: " + review.rare + "/10";
-    rare.classList.add("reviews_rare");
+  let rare = document.createElement("p");
+  rare.textContent = "Оценка: " + task.rare + "/10";
+  rare.classList.add("reviews_rare");
 
-    let sight = document.createElement("p");
-    sight.textContent = review.sight;
-    sight.classList.add("reviews_sight");
+  let sight = document.createElement("p");
+  sight.textContent = task.sight;
+  sight.classList.add("reviews_sight");
 
-    let text = document.createElement("p");
-    text.textContent = "Отзыв: " + review.text;
-    text.classList.add("reviews_text");
+  let text = document.createElement("p");
+  text.textContent = "Отзыв: " + task.text;
+  text.classList.add("reviews_text");
 
-    wrapBox.appendChild(login);
-    wrapBox.appendChild(sight);
-    wrapBox2.appendChild(rare);
-    wrapBox2.appendChild(text);
+  wrapBox.appendChild(login);
+  wrapBox.appendChild(sight);
+  wrapBox2.appendChild(rare);
+  wrapBox2.appendChild(text);
 
-    box.appendChild(wrapBox);
-    box.appendChild(wrapBox2);
+  box.appendChild(wrapBox);
+  box.appendChild(wrapBox2);
 
-    rewWrap.appendChild(box);
+  rewWrap.appendChild(box);
   });
+  
 }
 
-document.addEventListener("DOMContentLoaded", reviews);
+document.addEventListener("DOMContentLoaded", displayReviews(reviewsUrl));
 
 
 
