@@ -112,7 +112,7 @@ class UserManage {
       a.addEventListener("click", (event) => {
         event.preventDefault();
         const userData = JSON.parse(a.dataset.user);
-        window.location.href = `${window.location.href}/cards.html?id=${userData.id}`;
+        window.location.href = `/cards.html?id=${userData.id}`;
       });
     });
   }
