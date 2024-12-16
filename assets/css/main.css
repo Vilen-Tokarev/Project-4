@@ -1,0 +1,593 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.BGI {
+  background: url(../img/pic9\ 1.png) no-repeat center/cover;
+  height: 980px;
+}
+
+.container {
+  width: 1282px;
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 426px) {
+  .container {
+    width: 400px;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  background-color: #5484DC;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.hide {
+  display: none;
+}
+
+.load {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  z-index: 6;
+}
+
+.load hr {
+  border: 0;
+  margin: 0;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  border-radius: 50%;
+  animation: spin 2s ease infinite;
+}
+
+.load :first-child {
+  background: #19A68C;
+  animation-delay: -1.5s;
+}
+
+.load :nth-child(2) {
+  background: #F63D3A;
+  animation-delay: -1s;
+}
+
+.load :nth-child(3) {
+  background: #FDA543;
+  animation-delay: -0.5s;
+}
+
+.load :last-child {
+  background: #193B48;
+}
+
+.hide-loader {
+  animation: hidePreloader 1s;
+}
+
+.loader-hidden {
+  display: none;
+}
+
+@keyframes hideloader {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes spin {
+  0%, 100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(160%);
+  }
+  50% {
+    transform: translate(160%, 160%);
+  }
+  75% {
+    transform: translate(0, 160%);
+  }
+}
+.header {
+  height: 74px;
+}
+.header__box {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+}
+.header__nav {
+  display: flex;
+}
+@media (max-width: 426px) {
+  .header__nav {
+    display: none;
+  }
+}
+.header__nav_text {
+  display: flex;
+  gap: 52px;
+  margin-left: 29px;
+}
+.header__nav_text :hover {
+  color: #0077ff;
+  transition: 0.3s;
+}
+.header__nav_text-btn {
+  color: #fff;
+}
+.header__contact {
+  display: flex;
+  float: right;
+  margin-left: 34.5%;
+  color: #fff;
+}
+@media (max-width: 426px) {
+  .header__contact {
+    display: none;
+  }
+}
+.header .burger__menu {
+  display: none;
+  position: relative;
+  margin-top: 15px;
+  width: 80px;
+  height: 25px;
+  float: right;
+  z-index: 4;
+}
+@media (max-width: 426px) {
+  .header .burger__menu {
+    display: block;
+    margin-left: 59%;
+    margin-top: -1%;
+    width: 40px;
+  }
+}
+.header .burger__menu-items {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #333;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  animation: fadeIn 0.3s ease;
+}
+.header .burger__menu-items.open {
+  display: block;
+}
+.header .burger__menu-items a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+.header .burger__menu-items a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+.header .burger__icon {
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.header .burger__icon.open {
+  transform: rotate(90deg);
+}
+.header .burger__icon.open .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.header .burger__icon.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.header .burger__icon.open .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+.header .bar {
+  width: 100%;
+  height: 4px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.header .bar:last-child {
+  margin-bottom: 0;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main__title {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 300;
+  width: 653px;
+  margin: 0 auto;
+  font-family: "Rubik Mono One", monospace;
+  text-align: center;
+  margin-top: 144px;
+}
+@media (max-width: 426px) {
+  .main__title {
+    font-size: 28px;
+    width: 100%;
+  }
+}
+.main__slider::-webkit-scrollbar {
+  display: none;
+}
+.main__slider {
+  width: 1040px;
+  display: flex;
+  gap: 16px;
+  overflow-x: scroll;
+}
+.main__slider_gallery {
+  display: flex;
+  gap: 16px;
+}
+.main__slider_gallery :hover {
+  opacity: 0.7;
+  transition: 0.3s;
+  cursor: pointer;
+}
+@media (max-width: 426px) {
+  .main__slider_gallery :hover {
+    opacity: 1;
+  }
+}
+.main__controls {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 230px;
+}
+.main__controls #leftbtn,
+.main__controls #rightbtn {
+  cursor: pointer;
+  margin: 47px;
+}
+@media (max-width: 426px) {
+  .main__controls #leftbtn,
+  .main__controls #rightbtn {
+    margin: 5px;
+  }
+}
+.main__btn :hover {
+  background-color: #0077ff;
+  transition: 0.5s;
+}
+.main__btn_text {
+  padding: 13px 0;
+  width: 291px;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: #fff;
+  margin-top: 48px;
+  background-color: #FD7452;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutcity {
+  position: relative;
+  background-color: #5984CD;
+  height: 1456px;
+}
+@media (max-width: 426px) {
+  .aboutcity {
+    height: 100%;
+  }
+}
+.aboutcity__cardWrap_card1 {
+  padding-top: 57px;
+}
+.aboutcity__cardWrap_card1_opisanie {
+  font-size: 36px;
+  letter-spacing: 14%;
+  color: #1E2B4E;
+  font-family: "Rubik Mono One";
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card1_opisanie {
+    font-size: 26px;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+}
+.aboutcity__cardWrap_card1_img {
+  position: absolute;
+  margin-left: 20px;
+  z-index: 0;
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card1_img {
+    display: none;
+  }
+}
+.aboutcity__cardWrap_card1_title {
+  margin-top: 210px;
+  margin-left: 520px;
+  position: absolute;
+  color: #1E2B4E;
+  letter-spacing: 14%;
+  font-size: 24px;
+  font-family: "Rubik Mono One";
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card1_title {
+    position: relative;
+    margin: 0;
+    margin-top: 130px;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+.aboutcity__cardWrap_card1_text1 {
+  width: 730px;
+  height: 168px;
+  font-size: 16px;
+  letter-spacing: 14%;
+  line-height: 150%;
+  font-family: "Rubik Mono One";
+  text-align: center;
+  margin-top: 287px;
+  margin-left: 520px;
+  position: absolute;
+  color: #1E2B4E;
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card1_text1 {
+    padding-top: 15px;
+    position: relative;
+    margin: 0;
+    margin-top: 30px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100%;
+    border-radius: 15px;
+    opacity: 0.9;
+  }
+}
+.aboutcity__cardWrap_card1_text2 {
+  width: 630px;
+  height: 100px;
+  font-size: 16px;
+  letter-spacing: 14%;
+  line-height: 150%;
+  font-family: "Rubik Mono One";
+  text-align: center;
+  margin-top: 528px;
+  margin-left: 610px;
+  position: absolute;
+  color: #1E2B4E;
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card1_text2 {
+    padding-top: 15px;
+    position: relative;
+    margin: 0;
+    margin-top: 30px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100%;
+    border-radius: 15px;
+    opacity: 0.9;
+  }
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card2 {
+    padding-bottom: 50px;
+  }
+}
+.aboutcity__cardWrap_card2_title {
+  margin-top: 850px;
+  margin-left: 90px;
+  position: absolute;
+  color: #1E2B4E;
+  letter-spacing: 14%;
+  font-size: 24px;
+  font-family: "Rubik Mono One";
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card2_title {
+    position: relative;
+    margin: 0;
+    margin-top: 70px;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+.aboutcity__cardWrap_card2_text {
+  width: 623px;
+  height: 168px;
+  font-size: 16px;
+  letter-spacing: 14%;
+  line-height: 150%;
+  font-family: "Rubik Mono One";
+  text-align: center;
+  margin-top: 950px;
+  margin-left: 30px;
+  position: absolute;
+  color: #1E2B4E;
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card2_text {
+    padding-top: 15px;
+    position: relative;
+    margin: 0;
+    margin-top: 30px;
+    background-color: #fff;
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    opacity: 0.9;
+  }
+}
+.aboutcity__cardWrap_card2_img {
+  position: absolute;
+  margin-left: 5px;
+  z-index: 0;
+  margin-top: 600px;
+}
+@media (max-width: 426px) {
+  .aboutcity__cardWrap_card2_img {
+    display: none;
+  }
+}
+
+.map {
+  height: 100%;
+}
+.map__title {
+  font-size: 36px;
+  font-family: "Rubik Mono One";
+  color: #1E2B4E;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+@media (max-width: 426px) {
+  .map__title {
+    font-size: 30px;
+  }
+}
+.map__map-img {
+  margin-bottom: 80px;
+  margin-top: 68px;
+}
+@media (max-width: 426px) {
+  .map__map-img {
+    margin-bottom: 20px;
+  }
+}
+
+.footer {
+  height: 416px;
+  background-color: #00244C;
+}
+@media (max-width: 426px) {
+  .footer {
+    height: 100%;
+    text-align: center;
+  }
+}
+.footer__logo {
+  margin-top: 23px;
+}
+.footer__wrap {
+  display: flex;
+  align-items: baseline;
+}
+@media (max-width: 426px) {
+  .footer__wrap {
+    height: 120%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+}
+.footer__wrap_firstCollum_title {
+  margin-top: 24px;
+  font-family: "Inder", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #fff;
+}
+@media (max-width: 426px) {
+  .footer__wrap_firstCollum_title {
+    font-size: 12px;
+  }
+}
+.footer__wrap_firstCollum_text {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  width: 315px;
+  line-height: 20px;
+  margin-top: 9px;
+  color: #fff;
+}
+@media (max-width: 426px) {
+  .footer__wrap_firstCollum_text {
+    font-size: 10px;
+    width: 100%;
+  }
+}
+.footer__wrap_collum {
+  margin-left: 90px;
+}
+@media (max-width: 426px) {
+  .footer__wrap_collum {
+    margin-left: 0;
+  }
+}
+.footer__wrap_collum_title {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.footer__wrap_collum_text {
+  opacity: 70%;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 25px;
+  color: #fff;
+}
+@media (max-width: 426px) {
+  .footer__wrap_collum_text {
+    margin-top: 15px;
+  }
+}
+.footer__wrap_collum_link {
+  color: #fff;
+}

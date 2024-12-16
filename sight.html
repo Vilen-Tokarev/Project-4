@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/sight.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inder&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="./assets/img/icons8-путеводитель-100.png" type="image/x-icon">
+    <title>Путеводитель</title>
+</head>
+
+<body>
+    <div id="loading"></div>
+    <div id="loader" class="load">
+        <hr />
+        <hr />
+        <hr />
+        <hr />
+    </div>
+    <section id="header" class="header">
+        <div class="container">
+            <div class="header__box">
+                <img src="./assets/img/pngtree-sunset-summer-beach-vector-png-image_7104038 1.png" alt="img"
+                    class="header__logo">
+                <div class="header__nav">
+                    <ul class="header__nav_text">
+                        <li class="header__nav_text_btn"><a class="header__nav_text-btn" href="./index.html">Главная</a>
+                        </li>
+                        <li class="header__nav_text_btn"><a class="header__nav_text-btn"
+                                href="./sight.html">Достопримечательности</a></li>
+                        <li class="header__nav_text_btn"><a class="header__nav_text-btn"
+                                href="./contact.html">Контакты</a></li>
+                        <li class="header__nav_text_btn"><a class="header__nav_text-btn" href="./contact.html">Связаться
+                                с нами</a></li>
+                    </ul>
+                </div>
+                <div class="burger__menu">
+                    <div class="burger__icon" id="burgerIcon">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                    <div class="burger__menu-items" id="menuItems">
+                        <a href="./index.html">Главная</a>
+                        <a href="./contact.html">Контакты</a>
+                        <a href="./sight.html">Достопримечательности</a>
+                    </div>
+                </div>
+                <div class="header__contact">
+                    <p class="header__contact_text">
+                        +7 999 999-99-99 <br>
+                        pytevoditel@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="search">
+        <div class="container">
+            <div class="search__box">
+                <div class="search__search-wrap">
+                    <input class="search__search-wrap_search" type="text" id="searchInput" placeholder="Поиск...">
+                    <button class="search__search-wrap_search-btn" id="searchButton">Поиск</button>
+                </div>
+                <select class="search__filter-buttons" id="filter">
+                    <option class="search__filter-button" value="all">Все</option>
+                    <option class="search__filter-button" value="mountains">Горы</option>
+                    <option class="search__filter-button" value="trails">Тропы</option>
+                    <option class="search__filter-button" value="museums">Музеи</option>
+                </select>
+                <select class="search__sort-buttons" id="sort">
+                    <option class="search__sort-button" selected="selected" disabled value="all">Sort</option>
+                    <option class="search__sort-button" value="rare">Сортировка по рейтенгу</option>
+                    <option class="search__sort-button" value="rewiews">Сортировка по количеству отзывов</option>
+                </select>
+                <button id="reset-all">Сбросить все</button>
+            </div>
+
+        </div>
+    </section>
+    <section class="main">
+
+        <div class="container">
+            <p class="main__title">
+                достопримечательности
+            </p>
+            <div class="results-container" id="resultsContainer"></div>
+            <ul id="userList"></ul>
+            <div class="pag">
+                <button class="pagination__button" id="prevPage">Предыдущая страница</button>
+                <span class="pagination__page-number" id="num">1</span>
+                <button class="pagination__button" id="nextPage">Следующая страница</button>
+                <button id="more">More</button>
+            </div>
+            <script src="./assets/js/sight.js"></script>
+        </div>
+    </section>
+    <section id="footer" class="footer">
+        <div class="container">
+            <img src="./assets/img/pngtree-sunset-summer-beach-vector-png-image_7104038 1.png" alt="img"
+                class="footer__logo">
+            <div class="footer__wrap">
+
+                <ul class="footer__wrap_firsCollum">
+                    <li class="footer__wrap_firstCollum_title">
+                        ПУТЕВОДИТЕЛЬ ПО ГОРОДУ СУДАК
+                    </li>
+                    <li class="footer__wrap_firstCollum_text">
+                        Путеводитель предназначен для быстрого понимания места и удобного изучения различных городов
+                    </li>
+                </ul>
+
+                <ul class="footer__wrap_collum">
+                    <li class="footer__wrap_collum_title">
+                        <a href="./index.html" class="footer__wrap_collum_link">Главная</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./index.html#map" class="footer__wrap_collum_link">Карта</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./index.html#about" class="footer__wrap_collum_link">Описание</a>
+                    </li>
+                </ul>
+                <ul class="footer__wrap_collum">
+                    <li class="footer__wrap_collum_title">
+                        <a href="./index.html" class="footer__wrap_collum_link">Достопримечательности</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./sight.html#searchInput" class="footer__wrap_collum_link">Поиск</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./sight.html#footer" class="footer__wrap_collum_link">Контакты</a>
+                    </li>
+                </ul>
+                <ul class="footer__wrap_collum">
+                    <li class="footer__wrap_collum_title">
+                        <a href="./contact.html" class="footer__wrap_collum_link">Контакты</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./contact.html" class="footer__wrap_collum_link">FAQ</a>
+                    </li>
+                    <li class="footer__wrap_collum_text">
+                        <a href="./contact.html" class="footer__wrap_collum_link">Связаться с нами</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

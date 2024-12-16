@@ -1,0 +1,95 @@
+.burger { 
+    &__menu { 
+        display: none; 
+        position: relative; 
+        margin-top: 15px; 
+        width: 80px; 
+        height: 25px; 
+        float: right;
+ 
+        @media (max-width:420px) { 
+            display: block; 
+        } 
+ 
+        &-items { 
+            display: none; 
+            position: absolute; 
+            top: 50px; 
+            right: 0; 
+            background-color: #333; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            width: 250px; 
+            animation: fadeIn 0.3s ease; 
+ 
+            &.open { 
+                display: block; 
+            } 
+ 
+            & a { 
+                display: block; 
+                color: #fff; 
+                text-decoration: none; 
+                padding: 10px 20px; 
+                text-align: center; 
+                transition: background-color 0.3s ease; 
+ 
+                &:hover { 
+                    background-color: #555; 
+                    border-radius: 4px; 
+                } 
+            } 
+        } 
+    } 
+ 
+    &__icon { 
+        cursor: pointer; 
+        padding: 10px; 
+        background-color: #333; 
+        width: 100%; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: space-around; 
+        border-radius: 10px; 
+        transition: transform 0.3s ease; 
+        &.open { 
+            transform: rotate(90deg); 
+ 
+            & .bar:nth-child(1)  { 
+                transform: translateY(10px) rotate(45deg); 
+            } 
+ 
+            & .bar:nth-child(2) { 
+                opacity: 0; 
+            } 
+ 
+            & .bar:nth-child(3) { 
+                transform: translateY(-10px) rotate(-45deg); 
+            } 
+        } 
+         
+    } 
+} 
+ 
+.bar { 
+    width: 100%; 
+    height: 4px; 
+    margin-bottom: 5px; 
+    background-color: #fff; 
+    border-radius: 2px; 
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+ 
+    &:last-child { 
+        margin-bottom: 0; 
+    } 
+} 
+@keyframes fadeIn { 
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    } 
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+}
