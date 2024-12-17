@@ -1,4 +1,3 @@
-
 class Loader {
   constructor() {
     this.preloader = document.getElementById("loader");
@@ -26,16 +25,22 @@ class UserDisplay {
     this.user = null;
   }
 
-  async fetchUser() {
-    try {
-      const response = await fetch(this.apiUrl);
-      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-      this.user = await response.json();
-      this.makeCard();
-      this.createSlider();
-    } catch (error) {
-      console.error("Fetch Error:", error);
-    }
+  fetchUser() {
+    fetch(this.apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this.user = data;
+        this.makeCard();
+        this.createSlider();
+      })
+      .catch((error) => {
+        console.error("Fetch Error:", error);
+      });
   }
 
   makeCard() {
@@ -165,44 +170,57 @@ class ReviewsManager {
     this.reviewsUrl = reviewsUrl;
   }
 
-  async fetchReviews() {
-    try {
-      const response = await fetch(this.reviewsUrl);
-      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-      const tasks = await response.json();
-      this.displayReviews(tasks);
-    } catch (error) {
-      console.error("Fetch Error:", error);
-    }
+  fetchReviews() {
+    fetch(this.reviewsUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((tasks) => {
+        this.displayReviews(tasks);
+      })
+      .catch((error) => {
+        console.error("Fetch Error:", error);
+      });
   }
 
-  async addReview(review) {
-    try {
-      const response = await fetch(this.reviewsUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(review),
+  addReview(review) {
+    fetch(this.reviewsUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(review),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((task) => {
+        console.log("Review added:", task);
+        this.fetchReviews();
+      })
+      .catch((error) => {
+        console.error("Add Review Error:", error);
       });
-      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-      const task = await response.json();
-      console.log("Review added:", task);
-      this.fetchReviews();
-    } catch (error) {
-      console.error("Add Review Error:", error);
-    }
   }
 
-  async deleteReview(id) {
-    try {
-      const response = await fetch(`${this.reviewsUrl}/${id}`, {
-        method: "DELETE",
+  deleteReview(id) {
+    fetch(`${this.reviewsUrl}/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+        console.log("Review deleted");
+        this.fetchReviews();
+      })
+      .catch((error) => {
+        console.error("Delete Review Error:", error);
       });
-      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-      console.log("Review deleted");
-      this.fetchReviews();
-    } catch (error) {
-      console.error("Delete Review Error:", error);
-    }
   }
 
   displayReviews(tasks) {
