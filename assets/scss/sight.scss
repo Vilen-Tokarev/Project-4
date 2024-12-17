@@ -322,6 +322,29 @@ a {
         }
     }
 
+    &__sort-buttons{
+        background: url(../img-sight/sort.png) no-repeat center center;
+        color: transparent;
+        border: none;
+        width: 60px;
+        height: 60px;
+        margin-top: 30px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    #reset-all{
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 30px;
+        color: #00000093;    
+    }
+    &__sort-button {
+        color: #000;
+    }
     &__filter-button {
         color: #000;
     }
@@ -534,4 +557,11 @@ a {
             }
         }
     }
+}
+#more{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #00000093;
 }

@@ -1,68 +1,93 @@
-window.onload = function () {
-  let preloader = document.getElementById("loader");
-  let bg = document.getElementById("loading");
-  preloader.classList.add("hide-loader");
-  bg.classList.add("hide-loader");
-  setTimeout(function () {
-    preloader.classList.add("loader-hidden");
-    bg.classList.add("loader-hidden");
-  }, 2500);
-};
+class Loader {
+  constructor() {
+    this.preloader = document.getElementById("loader");
+    this.bg = document.getElementById("loading");
+  }
 
-document
-  .getElementById("open-modal-btn")
-  .addEventListener("click", function () {
-    document.getElementById("modal").classList.add("open");
-  });
+  hide() {
+    this.preloader.classList.add("hide-loader");
+    this.bg.classList.add("hide-loader");
+    setTimeout(() => {
+      this.preloader.classList.add("loader-hidden");
+      this.bg.classList.add("loader-hidden");
+    }, 2500);
+  }
 
-document
-  .getElementById("close-modal-btn")
-  .addEventListener("click", function () {
-    document.getElementById("modal").classList.remove("open");
-  });
+  init() {
+    window.onload = () => this.hide();
+  }
+}
 
-// Сохранение в Local storage
-document
-  .getElementById("send-modal-btn")
-  .addEventListener("click", function () {
-    const telInput = document.querySelector(".modal__box_input_tel");
-    const emailInput = document.querySelector(".modal__box_input_email");
-    const textInput = document.querySelector(".modal__box_input_text");
+class Modal {
+  constructor() {
+    this.modal = document.getElementById("modal");
+    this.openBtn = document.getElementById("open-modal-btn");
+    this.closeBtn = document.getElementById("close-modal-btn");
+    this.sendBtn = document.getElementById("send-modal-btn");
 
-    let info = {
-      tel: telInput.value,
-      email: emailInput.value,
-      text: textInput.value,
-    };
+    this.telInput = document.querySelector(".modal__box_input_tel");
+    this.emailInput = document.querySelector(".modal__box_input_email");
+    this.textInput = document.querySelector(".modal__box_input_text");
 
-    if (!telInput.value || !emailInput.value || !textInput.value) {
-      alert("Пожалуйста заполните все троки");
+    this.openBtn.addEventListener("click", () => this.open());
+    this.closeBtn.addEventListener("click", () => this.close());
+    this.sendBtn.addEventListener("click", () => this.saveData());
+  }
+
+  open() {
+    this.modal.classList.add("open");
+  }
+
+  close() {
+    this.modal.classList.remove("open");
+  }
+
+  saveData() {
+    const tel = this.telInput.value.trim();
+    const email = this.emailInput.value.trim();
+    const text = this.textInput.value.trim();
+
+    if (!tel || !email || !text) {
+      alert("Пожалуйста, заполните все строки");
       return;
     }
 
-    let pop = JSON.parse(localStorage.getItem("userInfo")) || [];
+    const info = {
+      tel,
+      email,
+      text,
+    };
 
-    pop.push(info);
+    let userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
+    userInfo.push(info);
 
-    let infoString = JSON.stringify(pop);
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
-    localStorage.setItem("userInfo", infoString);
+    this.telInput.value = "";
+    this.emailInput.value = "";
+    this.textInput.value = "";
 
-    (telInput.value = ""),
-      (emailInput.value = ""),
-      (textInput.value = ""),
-      document.getElementById("modal").classList.remove("open");
-  });
-
-document.getElementById("burgerIcon").addEventListener("click", function () {
-  const menuItems = document.getElementById("menuItems");
-  const burgerIcon = document.getElementById("burgerIcon");
-
-  if (menuItems.classList.contains("open")) {
-    menuItems.classList.remove("open");
-    burgerIcon.classList.remove("open");
-  } else {
-    menuItems.classList.add("open");
-    burgerIcon.classList.add("open");
+    this.close();
   }
-});
+}
+
+
+class BurgerMenu {
+  constructor() {
+    this.burgerIcon = document.getElementById("burgerIcon");
+    this.menuItems = document.getElementById("menuItems");
+
+    this.burgerIcon.addEventListener("click", () => this.toggleMenu());
+  }
+
+  toggleMenu() {
+    this.menuItems.classList.toggle("open");
+    this.burgerIcon.classList.toggle("open");
+  }
+}
+
+const loader = new Loader();
+loader.init();
+
+const modal = new Modal();
+new BurgerMenu();

@@ -323,6 +323,14 @@ a {
     }
 
 
+    &__imgWrap2 {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
     &__card1 {
         background-color: #fff;
         border-radius: 25px 25px 25px 25px;
@@ -332,8 +340,13 @@ a {
 
 
         &_img {
-            width: 641px;
+            width: 640px;
             height: 480px;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: 0.5px solid #000;
+            transition: 0.3s;
+            cursor: pointer;
 
             @media (max-width:426px) {
                 width: 100%;
@@ -341,9 +354,38 @@ a {
             }
         }
 
+
         &_img2 {
-            width: 641px;
-            height: 480px;
+            width: 270px;
+            height: 150px;
+            border-radius: 10px;
+            border: 0.5px solid #000;
+            opacity: 0.7;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            @media (max-width:426px) {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &_img3 {
+            width: 270px;
+            height: 150px;
+            border-radius: 10px;
+            border: 0.5px solid #000;
+            opacity: 0.7;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
 
             @media (max-width:426px) {
                 width: 100%;
@@ -453,15 +495,26 @@ a {
         border-radius: 10px;
         gap: 20px;
     }
-    &_wrapBox{
+
+    &_wrapBox {
         min-width: 350px;
         max-width: 350px;
-        @media(max-width: 426px){
+
+        @media(max-width: 426px) {
             width: 150px;
         }
-        @media(max-width: 376px){
+
+        @media(max-width: 376px) {
             width: 120px;
         }
+    }
+
+    &_wrapBox2{
+        width: 680px;
+    }
+    &_wrapBox3{
+        text-align: right;
+        display: flex;
     }
 
     &_box {
@@ -490,11 +543,27 @@ a {
         font-size: 20px;
         font-weight: 600;
     }
-    &_sight{
+
+    &_sight {
         color: #1e2b4e9c;
         font-family: "Rubik Mono One";
     }
-    &_text{
+
+    &_del{
+        align-items: center;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 10px;
+        background-color: rgb(255, 0, 0);
+        opacity: 0.6;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover{
+            opacity: 1;
+        }
+    }
+
+    &_text {
         color: #1E2B4E;
         font-family: "Rubik Mono One";
         font-size: 14px;
@@ -742,4 +811,71 @@ a {
 
 .modal.open .modal__box {
     transform: scale(1);
+}
+
+.slider-container {
+    position: fixed;
+    width: 80%;
+    height: 90vh;
+    z-index: 11;
+    margin-top: 2.5%;
+    margin-left: 10%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.slider {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 300%; 
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider__btn-prev,
+.slider__btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.82);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider__btn-prev {
+    left: 10px;
+}
+
+.slider__btn-next {
+    right: 10px;
+}
+
+.screen_slider{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #0000005e;
+    z-index: 11;
+    display: none;
+}
+
+#closeSlider{
+    float: right;
+    background-color: transparent;
+    border: none;
+    font-size: 45px;
+    margin-right: 50px;
+    margin-top: 30px;
+    cursor: pointer;
 }

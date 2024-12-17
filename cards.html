@@ -28,6 +28,14 @@
         <hr />
         <hr />
     </div>
+    <div id="slider_screen" class="screen_slider">
+        <button id="closeSlider">x</button>
+        <div class="slider-container">
+            <button class="slider__btn-prev"><--</button>
+            <div class="slider" id="sliderImg"></div>
+            <button class="slider__btn-next">--></button>
+        </div>
+    </div>
     <section class="header">
         <div class="container">
             <div class="header__box">
@@ -66,6 +74,12 @@
             </div>
         </div>
     </section>
+
+
+
+
+
+
     <section class="main">
         <div class="container">
             <div id="userDetails" class="main__card1">
@@ -86,10 +100,10 @@
                         Форма
                     </p>
                     <div class="modal__box_input">
-                        <input class="modal__box_input_login" type="login" id="login"
+                        <input class="modal__box_input_login" maxlength="15" type="login" id="login"
                             placeholder="Как к вам обращаться">
                         <input class="modal__box_input_rare" type="number" id="rare" placeholder="Оценка 1-10">
-                        <textarea class="modal__box_input_text" name="" id="text" cols="80" rows="10"
+                        <textarea class="modal__box_input_text" maxlength="50" name="" id="text" cols="80" rows="10"
                             placeholder="Отзыв"></textarea>
 
                     </div>
@@ -102,6 +116,7 @@
             <section class="reviews">
                 <div class="container">
                     <div class="reviews__wrap" id="rewWrap"></div>
+                    
                 </div>
             </section>
             <script src="./assets/js/cards.js"></script>
@@ -118,7 +133,8 @@
                         ПУТЕВОДИТЕЛЬ ПО ГОРОДУ СУДАК
                     </li>
                     <li class="footer__wrap_firstCollum_text">
-                        Путеводитель предназначен для быстрого понимания места и удобного изучения различных городов
+                        Путеводитель предназначен для быстрого понимания места и удобного изучения различных
+                        городов
                     </li>
                 </ul>
 

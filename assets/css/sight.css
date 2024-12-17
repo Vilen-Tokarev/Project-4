@@ -4,13 +4,13 @@
 }
 
 body {
-  background-color: #5484DC;
+  background-color: #5484dc;
 }
 
 #loading {
   width: 100vw;
   height: 100vh;
-  background-color: #5484DC;
+  background-color: #5484dc;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,22 +42,22 @@ body {
 }
 
 .load :first-child {
-  background: #19A68C;
+  background: #19a68c;
   animation-delay: -1.5s;
 }
 
 .load :nth-child(2) {
-  background: #F63D3A;
+  background: #f63d3a;
   animation-delay: -1s;
 }
 
 .load :nth-child(3) {
-  background: #FDA543;
+  background: #fda543;
   animation-delay: -0.5s;
 }
 
 .load :last-child {
-  background: #193B48;
+  background: #193b48;
 }
 
 .hide-loader {
@@ -290,6 +290,28 @@ a {
 .search__filter-buttons:focus {
   outline: none;
 }
+.search__sort-buttons {
+  background: url(../img-sight/sort.png) no-repeat center center;
+  color: transparent;
+  border: none;
+  width: 60px;
+  height: 60px;
+  margin-top: 30px;
+}
+.search__sort-buttons:focus {
+  outline: none;
+}
+.search #reset-all {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 30px;
+  color: rgba(0, 0, 0, 0.5764705882);
+}
+.search__sort-button {
+  color: #000;
+}
 .search__filter-button {
   color: #000;
 }
@@ -354,7 +376,7 @@ a {
 }
 .main__card1_textWrap_title {
   font-size: 25px;
-  color: #1E2B4E;
+  color: #1e2b4e;
   font-family: "Rubik Mono One";
 }
 @media (max-width: 426px) {
@@ -366,7 +388,7 @@ a {
 .main__card1_textWrap_text {
   margin-top: 35px;
   font-size: 16px;
-  color: #1E2B4E;
+  color: #1e2b4e;
   font-family: "Rubik Mono One";
   letter-spacing: 14%;
   line-height: 150%;
@@ -392,7 +414,7 @@ a {
 .pagination__button {
   padding: 10px 20px;
   margin: 0 10px;
-  background-color: #1E2B4E;
+  background-color: #1e2b4e;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -406,12 +428,12 @@ a {
 
 .pagination__page-number {
   font-size: 18px;
-  color: #1E2B4E;
+  color: #1e2b4e;
 }
 
 .footer {
   height: 416px;
-  background-color: #00244C;
+  background-color: #00244c;
 }
 @media (max-width: 426px) {
   .footer {
@@ -492,4 +514,12 @@ a {
 }
 .footer__wrap_collum_link {
   color: #fff;
+}
+
+#more {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5764705882);
 }

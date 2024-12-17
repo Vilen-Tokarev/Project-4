@@ -1,52 +1,76 @@
-let horizontScroll = document.querySelector(".main__slider");
-let leftbtn = document.getElementById("leftbtn");
-let rightbtn = document.getElementById("rightbtn");
-
-window.onload = function () {
-  let preloader = document.getElementById("loader");
-  let bg = document.getElementById("loading");
-  preloader.classList.add("hide-loader");
-  bg.classList.add("hide-loader");
-  setTimeout(function () {
-    preloader.classList.add("loader-hidden");
-    bg.classList.add("loader-hidden");
-  }, 2500);
-};
-
-// Слайдер
-rightbtn.addEventListener("click", () => {
-  horizontScroll.style.scrollBehavior = "smooth";
-  horizontScroll.scrollLeft += 360;
-
-  // Проверка, если слайдер дошел до конца
-  if (
-    horizontScroll.scrollLeft >=
-    horizontScroll.scrollWidth - horizontScroll.clientWidth
-  ) {
-    horizontScroll.scrollLeft = 0;
+class Loader {
+  constructor() {
+    this.preloader = document.getElementById("loader");
+    this.bg = document.getElementById("loading");
   }
-});
 
-leftbtn.addEventListener("click", () => {
-  horizontScroll.style.scrollBehavior = "smooth";
-  horizontScroll.scrollLeft -= 360;
-
-  // Проверка если слайдер дошел до начала
-  if (horizontScroll.scrollLeft <= 0) {
-    horizontScroll.scrollLeft =
-      horizontScroll.scrollWidth - horizontScroll.clientWidth;
+  hide() {
+    this.preloader.classList.add("hide-loader");
+    this.bg.classList.add("hide-loader");
+    setTimeout(() => {
+      this.preloader.classList.add("loader-hidden");
+      this.bg.classList.add("loader-hidden");
+    }, 2500);
   }
-});
 
-document.getElementById("burgerIcon").addEventListener("click", function () {
-  const menuItems = document.getElementById("menuItems");
-  const burgerIcon = document.getElementById("burgerIcon");
-
-  if (menuItems.classList.contains("open")) {
-    menuItems.classList.remove("open");
-    burgerIcon.classList.remove("open");
-  } else {
-    menuItems.classList.add("open");
-    burgerIcon.classList.add("open");
+  init() {
+    window.onload = () => this.hide();
   }
-});
+}
+
+class HorizontalSlider {
+  constructor(sliderElement, leftButton, rightButton) {
+    this.slider = sliderElement;
+    this.leftButton = leftButton;
+    this.rightButton = rightButton;
+
+    this.leftButton.addEventListener("click", () => this.scrollLeft());
+    this.rightButton.addEventListener("click", () => this.scrollRight());
+  }
+
+  scrollLeft() {
+    this.slider.style.scrollBehavior = "smooth";
+    this.slider.scrollLeft -= 360;
+
+    if (this.slider.scrollLeft <= 0) {
+      this.slider.scrollLeft = this.slider.scrollWidth - this.slider.clientWidth;
+    }
+  }
+
+  scrollRight() {
+    this.slider.style.scrollBehavior = "smooth";
+    this.slider.scrollLeft += 360;
+
+    if (
+      this.slider.scrollLeft >=
+      this.slider.scrollWidth - this.slider.clientWidth
+    ) {
+      this.slider.scrollLeft = 0;
+    }
+  }
+}
+
+class BurgerMenu {
+  constructor() {
+    this.burgerIcon = document.getElementById("burgerIcon");
+    this.menuItems = document.getElementById("menuItems");
+
+    this.burgerIcon.addEventListener("click", () => this.toggleMenu());
+  }
+
+  toggleMenu() {
+    this.menuItems.classList.toggle("open");
+    this.burgerIcon.classList.toggle("open");
+  }
+}
+
+
+const loader = new Loader();
+loader.init();
+
+const horizontScroll = document.querySelector(".main__slider");
+const leftbtn = document.getElementById("leftbtn");
+const rightbtn = document.getElementById("rightbtn");
+
+const slider = new HorizontalSlider(horizontScroll, leftbtn, rightbtn);
+new BurgerMenu();
