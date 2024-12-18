@@ -1,4 +1,3 @@
-
 class Loader {
   constructor() {
     this.preloader = document.getElementById("loader");
@@ -74,8 +73,9 @@ class UserManager {
     });
   }
 
-  updatePage(page) {
+  updatePage(page, itemsPerPage) {
     this.currentPage = page;
+    this.itemsPerPage = itemsPerPage
     this.fetchUsers(this.currentQuery, this.currentCategory, this.currentSortBy, this.currentOrder);
   }
 
@@ -84,11 +84,12 @@ class UserManager {
     document.getElementById("nextPage").disabled = this.currentPage === 5;
     document.getElementById("num").textContent = this.currentPage;
   }
-  
+
   more() {
     document.getElementById("more").addEventListener("click", () => {
       if (this.currentPage === 5) {
         document.getElementById("more").disabled;
+        return;
       }
       userManager.itemsPerPage += 10;
       userManager.fetchUsers();
@@ -150,8 +151,12 @@ class Pagination {
     this.prevButton = document.getElementById("prevPage");
     this.nextButton = document.getElementById("nextPage");
 
-    this.prevButton.addEventListener("click", () => this.userManager.updatePage(this.userManager.currentPage - 1));
-    this.nextButton.addEventListener("click", () => this.userManager.updatePage(this.userManager.currentPage + 1));
+    this.prevButton.addEventListener("click", () => {
+      this.userManager.updatePage(this.userManager.currentPage - 1, 10)
+    });
+    this.nextButton.addEventListener("click", () => {
+      this.userManager.updatePage(this.userManager.currentPage + 1, 10)
+    });
   }
 }
 
